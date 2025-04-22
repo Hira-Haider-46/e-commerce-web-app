@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { assets } from "../assets/frontend_assets/assets.ts";
-import { NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,15 +13,8 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className="flex items-center justify-between px-6 py-4 bg-white relative">
-      <img src={assets.logo} alt="logo" className="h-10 z-10" />
-      <button
-        className="md:hidden z-10"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        {menuOpen ? <X size={28} /> : <Menu size={28} />}
-      </button>
-
+    <nav className="flex items-center justify-between px-10 md:px-15 py-4 bg-white relative">
+      <NavLink to='/'><img src={assets.logo} alt="logo" className="h-10 z-10" /></NavLink>
       <ul
         className={`flex flex-col text-center md:flex-row space-y-4 md:space-y-0 md:space-x-6 absolute md:static top-[100%] left-0 w-full md:w-auto bg-white px-6 md:px-0 py-4 md:py-0 transition-all duration-300 ${
           menuOpen ? "block" : "hidden md:flex"
@@ -43,8 +35,8 @@ const Navbar: React.FC = () => {
               <>
                 {item.label}
                 <span
-                  className={`absolute left-0 -bottom-1 h-0.5 bg-black transition-all duration-300 ${
-                    isActive ? "w-full" : "w-0 group-hover:w-full"
+                  className={`absolute left-[26%] md:left-0 -bottom-1 h-0.5 bg-black transition-all duration-300 ${
+                    isActive ? "w-1/2 md:w-full" : "w-0 group-hover:w-1/2 md:group-hover:w-full"
                   }`}
                 ></span>
               </>
@@ -52,6 +44,30 @@ const Navbar: React.FC = () => {
           </NavLink>
         ))}
       </ul>
+
+      <div className="flex items-center gap-6">
+        <img src={assets.search_icon} alt="search_icon" className="w-5 cursor-pointer"/>
+        <div className="group relative">
+          <img src={assets.profile_icon} alt="profile_icon" className="w-5 cursor-pointer"/>
+          <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
+            <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
+              <p className="cursor-pointer hover:text-black">My Profile</p>
+              <p className="cursor-pointer hover:text-black">Orders</p>
+              <p className="cursor-pointer hover:text-black">Logout</p>
+            </div>
+          </div>
+        </div>
+        <Link to="/cart" className="relative">
+          <img src={assets.cart_icon} alt="cart_icon" className="w-5"/>
+          <p className="absolute right-[-5px] bottom-[-5px] leading-4 text-center w-4 bg-black text-white aspect-square rounded-full text-[8px]">10</p>
+        </Link>
+      </div>
+      <button
+        className="md:hidden z-10"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        <img src={assets.menu_icon} alt="menu_icon" className="w-6"/>
+      </button>
     </nav>
   );
 };
