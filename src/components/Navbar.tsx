@@ -32,14 +32,14 @@ const Navbar: React.FC = () => {
             }
           >
             {({ isActive }) => (
-              <>
+              <p className="text-base md:text-lg">
                 {item.label}
                 <span
                   className={`absolute left-[26%] md:left-0 -bottom-1 h-0.5 bg-black transition-all duration-300 ${
                     isActive ? "w-1/2 md:w-full" : "w-0 group-hover:w-1/2 md:group-hover:w-full"
                   }`}
                 ></span>
-              </>
+              </p>
             )}
           </NavLink>
         ))}
