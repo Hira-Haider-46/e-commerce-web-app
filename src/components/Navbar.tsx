@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { assets } from "../assets/frontend_assets/assets.ts";
 import { Link, NavLink } from "react-router-dom";
+import { ShopContext } from "../context/ShopContext.tsx";
 
 const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const context = useContext(ShopContext);
+  if(!context) {
+    throw new Error("Navbar must be used within a ShopContextProvider");
+  }
+  const { setShowSearch } = context;
 
   const navItems = [
     { to: "/", label: "Home" },
@@ -46,7 +53,7 @@ const Navbar: React.FC = () => {
       </ul>
 
       <div className="flex items-center gap-6">
-        <img src={assets.search_icon} alt="search_icon" className="w-5 cursor-pointer"/>
+        <img src={assets.search_icon} alt="search_icon" className="w-5 cursor-pointer" onClick={() => setShowSearch(true)}/>
         <div className="group relative">
           <img src={assets.profile_icon} alt="profile_icon" className="w-5 cursor-pointer"/>
           <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
