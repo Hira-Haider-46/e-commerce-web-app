@@ -2,7 +2,7 @@ import { assets } from "../assets/frontend_assets/assets";
 
 const Hero: React.FC = () => {
   return (
-    <div className="border-t border-gray-400 flex flex-col md:flex-row w-[92%] mx-auto">
+    <div className="border-t border-gray-400 flex flex-col md:flex-row w-[96%] md:w-[92%] xl:w-[96%] mx-auto">
       <div className="w-full md:w-1/2 flex items-center justify-center py-10 sm:py-0 text-[#414141]">
         <div className="py-10 md:py-0">
           <div className="items-center gap-2 flex">
@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
-      <img src={assets.hero_img} alt="hero_img" className="w-full sm:w-1/2" />
+      <img src={assets.hero_img} alt="hero_img" className="w-full sm:w-2/3 md:w-1/2 m-auto" />
     </div>
   );
 };

@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className="flex items-center justify-between px-10 md:px-15 py-4 bg-white relative">
+    <nav className="flex items-center justify-between px-4 md:px-15 py-4 bg-white relative">
       <NavLink to='/'><img src={assets.logo} alt="logo" className="h-10 z-10" /></NavLink>
       <ul
         className={`flex flex-col text-center md:flex-row space-y-4 md:space-y-0 md:space-x-6 absolute md:static top-[100%] left-0 w-full md:w-auto bg-white px-6 md:px-0 py-4 md:py-0 transition-all duration-300 ${
@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
         className="md:hidden z-10"
         onClick={() => setMenuOpen(!menuOpen)}
       >
-        <img src={assets.menu_icon} alt="menu_icon" className="w-6"/>
+        <img src={assets.menu_icon} alt="menu_icon" className="w-6 cursor-pointer"/>
       </button>
     </nav>
   );
